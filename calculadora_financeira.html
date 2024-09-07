@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>M.E.L da Colmeia</h1>
+    <h2>Simulador Financeiro</h2>
+
+    <p>Informe a quantidade de colmeias</p>
+    <input type="number" id="input_qtd_colmeia"><br>
+    <p>Informe sua produção anual | KG</p>
+    <input type="number" id="input_producao_ano"><br>
+    <p>Informe o preço de venda | R$/KG"</p>
+    <input type="number" id="input_preco"><br><br>
+
+    <button onclick="calcularPerda()">Ver resultado</button>
+
+    <div id="div_resposta"></div>
+
+
+    
+</body>
+</html>
+<script>
+    function calcularPerda(){
+        var preco = Number(input_preco.value)
+        var producao = Number(input_producao_ano.value)
+        var qtdColmeia = Number(input_qtd_colmeia.value)
+
+        // mediaDaProdu
+        var mediaColmeiaAno = producao/qtdColmeia
+
+        // perda de em kilos de acordo com a perda de 20.6% do rendimento por colmeia
+        var perdaKilosPorColmeia = mediaColmeiaAno * 0.206
+
+        // perda total (no geral)
+        var perdaTotalKilos = perdaKilosPorColmeia * qtdColmeia 
+
+        // calculo da perda do lucro cessante com base no preço do cliente
+        var lucroCessanteAno  = perdaTotalKilos * preco
+
+
+        div_resposta.innerHTML = `
+            <h1>Seus resultados</h1>
+            <p>De acordo com estatísticas sobre o manejo inadequedo de colmeias, o descontrole da temperatura pode reduzir a produção em aproximadamente 12,6 a 20,6%. Abaixo, você verá os possíveis impactos dessa perda na sua produção no cenário mais adverso:</p>
+            <p><strong>Produção perdida:</strong> Aproximadamente ${perdaKilosPorColmeia.toFixed(2)} Kg por colmeia.</p>
+            <p><strong>Perda Anual Total:</strong> No ano, você teve uma perda total de ${perdaTotalKilos.toFixed(2)} Kg.</p>
+            <p><strong>Lucro Cessante:</strong> Cerca de R$${lucroCessanteAno.toFixed(2)} de lucro cessante, considerando as vendas não realizadas devido a produção reduzida.</p>
+            <h2>Solução com Sistema de Sensores</h2>
+            <p>A implementação do sistema de sensores proposto pelo projeto M.E.L para colmeias permitirá minimizar os impactos negativos na produção de mel. Benefícios do monitoramento continuo:</p>
+            <ul>    
+                <li> Ganho de produção.</li>
+                <li> Avanço na qualidade do mel.</li>
+                <li> Prolongamento da vida útil das abelhas.</li>
+                <li> Garantia de um produto de maior qualidade.</li>
+            </ul> 
+            <a href="https://www.nature.com/articles/s41598-024-59513-6"> Fonte: First large‑scale study reveals important losses of managed honey bee and stingless bee colonies in Latin America</a>`
+
+    }
+
+</script>   
