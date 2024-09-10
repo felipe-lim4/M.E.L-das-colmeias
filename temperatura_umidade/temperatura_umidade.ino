@@ -37,16 +37,12 @@ void loop() {
     
     //PASSE PELA VALIDAÇÃO, ENTRA NO PRINT DOS RESULTADOS
   } else{
-    Serial.print("Umidade: ");
-    Serial.print(umidade);
-    Serial.println(" % ");
-
+    Serial.println(umidade);
   }
 
 // REALIZA PRINTS de forma seriada do texto "Temperatura: (valor da variável)C" a cada 2000ms
-  Serial.print("Temperatura: ");
-  Serial.print(temperaturaCelsius);
-  Serial.println(" C");
-
+ 
+  Serial.println(temperaturaCelsius);
+ 
   delay(1000);
 }
